@@ -1,5 +1,6 @@
 from pygame import draw
 from .constants import *
+
 class Piece:
     PADDING = 12
     OUTLINE = 2

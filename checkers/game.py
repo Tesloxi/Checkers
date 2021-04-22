@@ -15,8 +15,11 @@ class Game:
     def _init(self):
         self.selected = None
         self.board = Board()
-        self.turn = RED
+        self.turn = BLACK
         self.valid_moves = {}
+
+    def winner(self):
+        return self.board.winner()
 
     def reset(self):
         self._init()
@@ -52,10 +55,11 @@ class Game:
     def draw_valid_moves(self, moves):
         for move in moves:
             row, col = move
-            draw.circle(self.surface, BLUE, (col * SQUARE_SIZE + SQUARE_SIZE//2, row * SQUARE_SIZE + SQUARE_SIZE//2), 15)
+            draw.circle(self.surface, GREY, (col * SQUARE_SIZE + SQUARE_SIZE//2, row * SQUARE_SIZE + SQUARE_SIZE//2), 15)
 
     def change_turn(self):
-        if self.turn == RED:
-            self.turn = WHITE
+        self.valid_moves = {}
+        if self.turn == BLACK:
+            self.turn = BEIGE
         else:
-            self.turn = RED
+            self.turn = BLACK
